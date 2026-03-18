@@ -41,7 +41,7 @@ Below is a preview of the cleaned dataset:
 | LFL2     |        0 | team       |       50679 |        0 |         2 |         0 |            0 |           2 |
 | LFL2     |        0 | team       |       51389 |        0 |         0 |         0 |            2 |           2 |
 
-## Baron Advantage Distribution
+### Baron Advantage Distribution
 
 <iframe 
     src="./assets/baron_plot.html"
@@ -54,7 +54,7 @@ The distribution shows that most games have a small baron difference (0–1), me
 
 ---
 
-## Dragon Advantage Distribution
+### Dragon Advantage Distribution
 
 <iframe 
     src="./assets/dragon_plot.html"
@@ -65,7 +65,7 @@ The distribution shows that most games have a small baron difference (0–1), me
 
 The dragon difference is more spread out, suggesting that teams are able to build larger advantages in dragons compared to barons over the course of a game.
 
-## Relationship Between Objectives and Winning
+### Relationship Between Objectives and Winning
 
 <iframe 
     src="./assets/box_plot.html"
@@ -99,7 +99,7 @@ There is a strong positive relationship between objective difference and win rat
 
 This grouped table summarizes how win rate changes as a team’s baron advantage increases. Teams with no baron advantage win about half the time, while teams with a baron advantage of 1 win about 91% of the time, showing that even a small edge in barons is strongly associated with winning. Interestingly, the win rate slightly decreases for larger baron differences, which may suggest that barons become less impactful as the game progresses, since teams may already have large leads or other objectives that play a bigger role in determining the outcome.
 
-### Assessment of Missingness
+## Assessment of Missingness
 
 The primary columns in this dataset with missing values are `atakhans` and `elders`. However, I do not believe that either of these columns is MNAR (Missing Not At Random).
 
