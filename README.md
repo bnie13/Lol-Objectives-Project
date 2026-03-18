@@ -99,7 +99,7 @@ There is a strong positive relationship between objective difference and win rat
 
 This grouped table summarizes how win rate changes as a team’s baron advantage increases. Teams with no baron advantage win about half the time, while teams with a baron advantage of 1 win about 91% of the time, showing that even a small edge in barons is strongly associated with winning. Interestingly, the win rate slightly decreases for larger baron differences, which may suggest that barons become less impactful as the game progresses, since teams may already have large leads or other objectives that play a bigger role in determining the outcome.
 
-### Missingness Analysis (MNAR)
+### Assessment of Missingness
 
 The primary columns in this dataset with missing values are `atakhans` and `elders`. However, I do not believe that either of these columns is MNAR (Missing Not At Random).
 
@@ -126,6 +126,8 @@ First, I tested whether missingness depends on **league**. The observed test sta
 
 
 I test whether Baron objective advantage has a stronger impact on win rate than Dragon objective advantage.
+
+## Hypothesis Testing
 
 **Null Hypothesis:**  
 The difference in win rate advantage between Baron and Dragon objectives is due to random chance.
@@ -154,7 +156,7 @@ p-value ≈ 0.0002
 **Conclusion:**  
 Since the p-value is much smaller than 0.05, there is strong evidence against the null hypothesis. This suggests that Baron objective advantage is associated with a larger increase in win probability compared to Dragon advantage. This aligns with gameplay intuition, as Baron provides a powerful late-game buff that can directly enable teams to close out games, whereas Dragons provide more gradual benefits.
 
-**Prediction Problem**
+## Framing a Prediction Problem
 The goal of this prediction task is to predict whether a team will win a game based on in-game statistics. This is a **binary classification problem**, since the response variable only has two possible outcomes: win or loss.
 
 **Response Variable:**  
