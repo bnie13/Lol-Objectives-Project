@@ -49,7 +49,6 @@ Below is a preview of the cleaned dataset:
     height="600"
     frameborder="0">
 </iframe>
-
 The distribution shows that most games have a small baron difference (0–1), meaning baron control is usually close between teams, with large differences being relatively rare.
 
 ---
@@ -62,5 +61,36 @@ The distribution shows that most games have a small baron difference (0–1), me
     height="600"
     frameborder="0">
 </iframe>
-
 The dragon difference is more spread out, suggesting that teams are able to build larger advantages in dragons compared to barons over the course of a game.
+
+## Relationship Between Objectives and Winning
+
+<iframe 
+    src="assets/box_plot.html"
+    width="800"
+    height="600"
+    frameborder="0">
+</iframe>
+Winning teams tend to secure significantly more total objectives than losing teams, as shown by the higher median and overall distribution in the box plot.
+
+---
+
+<iframe 
+    src="assets/line_plot.html"
+    width="800"
+    height="600"
+    frameborder="0">
+</iframe>
+There is a strong positive relationship between objective difference and win rate, with teams gaining more objectives becoming increasingly likely to win the game.
+
+### Grouped Table: Win Rate by Baron Difference
+
+|   barons_diff |   games |   win_rate |
+|--------------:|--------:|-----------:|
+|             0 |    4340 |       0.5  |
+|             1 |    5998 |       0.91 |
+|             2 |     962 |       0.88 |
+|             3 |     102 |       0.86 |
+|             4 |       4 |       0.75 |
+
+This grouped table summarizes how win rate changes as a team’s baron advantage increases. Teams with no baron advantage win about half the time, while teams with a baron advantage of 1 win about 91% of the time, showing that even a small edge in barons is strongly associated with winning. Interestingly, the win rate slightly decreases for larger baron differences, which may suggest that barons become less impactful as the game progresses, since teams may already have large leads or other objectives that play a bigger role in determining the outcome.
