@@ -39,3 +39,27 @@ Below is a preview of the cleaned dataset:
 | LFL2     |        1 | team       |        1 |         3 |          11 |
 | LFL2     |        0 | team       |        0 |         2 |           2 |
 | LFL2     |        0 | team       |        0 |         0 |           2 |
+
+## Baron Advantage Distribution
+
+<iframe 
+    src="assets/baron_plot.html"
+    width="800"
+    height="600"
+    frameborder="0">
+</iframe>
+
+The distribution shows that most games have a small baron difference (0–1), meaning baron control is usually close between teams, with large differences being relatively rare.
+
+---
+
+## Dragon Advantage Distribution
+
+<iframe 
+    src="assets/dragon_plot.html"
+    width="800"
+    height="600"
+    frameborder="0">
+</iframe>
+
+The dragon difference is more spread out, suggesting that teams are able to build larger advantages in dragons compared to barons over the course of a game.
