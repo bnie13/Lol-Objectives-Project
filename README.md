@@ -49,6 +49,7 @@ Below is a preview of the cleaned dataset:
     height="600"
     frameborder="0">
 </iframe>
+
 The distribution shows that most games have a small baron difference (0–1), meaning baron control is usually close between teams, with large differences being relatively rare.
 
 ---
@@ -61,6 +62,7 @@ The distribution shows that most games have a small baron difference (0–1), me
     height="600"
     frameborder="0">
 </iframe>
+
 The dragon difference is more spread out, suggesting that teams are able to build larger advantages in dragons compared to barons over the course of a game.
 
 ## Relationship Between Objectives and Winning
@@ -71,6 +73,7 @@ The dragon difference is more spread out, suggesting that teams are able to buil
     height="600"
     frameborder="0">
 </iframe>
+
 Winning teams tend to secure significantly more total objectives than losing teams, as shown by the higher median and overall distribution in the box plot.
 
 ---
@@ -81,6 +84,7 @@ Winning teams tend to secure significantly more total objectives than losing tea
     height="600"
     frameborder="0">
 </iframe>
+
 There is a strong positive relationship between objective difference and win rate, with teams gaining more objectives becoming increasingly likely to win the game.
 
 ### Grouped Table: Win Rate by Baron Difference
@@ -119,6 +123,7 @@ First, I tested whether missingness depends on **league**. The observed test sta
     height="600"
     frameborder="0">
 </iframe>
+
 The plot shows that certain leagues, particularly the LPL, have a much higher proportion of missing `atakhans` values compared to others. This supports the conclusion that missingness is not random and is strongly associated with league.
 
 Next, I tested whether missingness in `atakhans` depends on `totalgold`. The observed difference in mean total gold between missing and non-missing groups was approximately 2.21. However, the permutation test resulted in a relatively large p-value (0.12-0.20), indicating that this difference could reasonably occur by chance. Therefore, there is no strong evidence that missingness depends on total gold.
