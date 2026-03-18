@@ -46,7 +46,7 @@ Below is a preview of the cleaned dataset:
 <iframe 
     src="./assets/baron_plot.html"
     width="800"
-    height="600"
+    height="450"
     frameborder="0">
 </iframe>
 
@@ -59,7 +59,7 @@ The distribution shows that most games have a small baron difference (0–1), me
 <iframe 
     src="./assets/dragon_plot.html"
     width="800"
-    height="600"
+    height="450"
     frameborder="0">
 </iframe>
 
@@ -70,7 +70,7 @@ The dragon difference is more spread out, suggesting that teams are able to buil
 <iframe 
     src="./assets/box_plot.html"
     width="800"
-    height="600"
+    height="450"
     frameborder="0">
 </iframe>
 
@@ -81,7 +81,7 @@ Winning teams tend to secure significantly more total objectives than losing tea
 <iframe 
     src="./assets/line_plot.html"
     width="800"
-    height="600"
+    height="450"
     frameborder="0">
 </iframe>
 
@@ -120,12 +120,149 @@ First, I tested whether missingness depends on **league**. The observed test sta
 <iframe 
     src="./assets/missing_league_plot.html"
     width="800"
-    height="600"
+    height="450"
     frameborder="0">
 </iframe>
 
-The plot shows that certain leagues, particularly the LPL, have a much higher proportion of missing `atakhans` values compared to others. This supports the conclusion that missingness is not random and is strongly associated with league.
 
-Next, I tested whether missingness in `atakhans` depends on `totalgold`. The observed difference in mean total gold between missing and non-missing groups was approximately 2.21. However, the permutation test resulted in a relatively large p-value (0.12-0.20), indicating that this difference could reasonably occur by chance. Therefore, there is no strong evidence that missingness depends on total gold.
+I test whether Baron objective advantage has a stronger impact on win rate than Dragon objective advantage.
 
-Overall, these results suggest that missingness in `atakhans` is structured and depends on league, rather than being purely random.
+**Null Hypothesis:**  
+The difference in win rate advantage between Baron and Dragon objectives is due to random chance.
+
+**Alternative Hypothesis:**  
+Baron objective advantage leads to a larger win rate difference than Dragon objective advantage.
+
+**Test Statistic:**  
+The difference between win rate gaps:  
+(WinRate when ahead − WinRate when behind) for Baron minus the same quantity for Dragon.
+
+**Significance Level:**  
+0.05
+
+**Results:**  
+Observed test statistic ≈ 0.149  
+p-value ≈ 0.0002  
+
+<iframe
+    src="assets/hypothesis_plot.html"
+    width="800"
+    height="450"
+    style="border:none;">
+</iframe>
+
+**Conclusion:**  
+Since the p-value is much smaller than 0.05, there is strong evidence against the null hypothesis. This suggests that Baron objective advantage is associated with a larger increase in win probability compared to Dragon advantage. This aligns with gameplay intuition, as Baron provides a powerful late-game buff that can directly enable teams to close out games, whereas Dragons provide more gradual benefits.
+
+**Prediction Problem**
+The goal of this prediction task is to predict whether a team will win a game based on in-game statistics. This is a **binary classification problem**, since the response variable only has two possible outcomes: win or loss.
+
+**Response Variable:**  
+The response variable is `result`, where 1 indicates a win and 0 indicates a loss. This is a natural choice because the primary objective in a game is to win, and it allows us to directly evaluate how different features contribute to success.
+
+**Features (at time of prediction):**  
+The model uses features that would reasonably be available during the game, such as objective counts (e.g., barons, dragons, heralds), and other aggregated statistics. These features are chosen because they reflect a team’s performance up to that point without using any information from the future.
+
+**Evaluation Metric:**  
+I use accuracy as the primary evaluation metric, which measures the proportion of correctly predicted outcomes. Accuracy is appropriate here because the dataset is relatively balanced between wins and losses, so there is no strong class imbalance that would require metrics like F1-score.
+
+**Justification:**  
+This setup reflects a realistic prediction scenario, where we want to estimate a team’s probability of winning based on current game state information. By restricting features to those available at the time of prediction, the model avoids data leakage and better represents how such a model would be used in practice.
+
+## Baseline Model
+
+I build a baseline model to predict whether a team wins using a **logistic regression classifier**.
+
+**Features:**
+- `barons_diff` (quantitative): difference in number of barons taken
+- `dragons_diff` (quantitative): difference in number of dragons taken
+
+Both features are numerical and represent the relative objective advantage between teams.
+
+**Response Variable:**
+- `result` (binary): 1 for win, 0 for loss
+
+**Preprocessing:**
+Since both features are quantitative, I apply **standardization** using `StandardScaler` to normalize their scales before fitting the model. No categorical encoding is needed because there are no nominal or ordinal features in this model.
+
+**Model:**
+I use a **logistic regression model**, which is appropriate for binary classification problems and provides an interpretable relationship between objective differences and win probability.
+
+**Performance:**
+The model achieves an accuracy of approximately **0.89** on the test set.
+
+**Evaluation:**
+The model performs well, indicating that objective differences (barons and dragons) are strong predictors of game outcomes. However, this model is relatively simple and only uses two features, so it may not capture all aspects of the game. While the high accuracy suggests good predictive power, further improvements could be made by incorporating additional features such as gold difference or other objective statistics.
+
+Overall, this baseline model provides a strong starting point while remaining simple and interpretable, and it demonstrates the importance of objective control in determining game outcomes.
+
+## Final Model
+
+To improve upon the baseline model, I expanded the feature set to better capture different aspects of objective control throughout the game.
+
+**Features Added:**
+- `barons_diff` (quantitative)
+- `dragons_diff` (quantitative)
+- `heralds_diff` (quantitative)
+- `void_grubs_diff` (quantitative)
+- `total_obj_diff` (quantitative)
+- `early_obj_diff` (quantitative)
+
+These features are all numerical and represent differences in objectives between teams. They are useful because they capture multiple stages of the game: early-game pressure (heralds, void grubs), mid-game objectives (dragons), and late-game power spikes (barons). By combining them, the model better reflects how different objectives contribute to winning at different points in the game.
+
+**Model Choice:**
+I continue using a **logistic regression classifier**, since the task is binary classification and the model remains interpretable while handling multiple features effectively.
+
+**Hyperparameter Tuning:**
+I use **GridSearchCV with 5-fold cross-validation** to select the best regularization strength. The parameter grid tested different values of `C` (0.01, 0.1, 1, 10) with L2 regularization. The best-performing hyperparameters were:
+
+- `C = 10`
+- `penalty = l2`
+
+A higher value of `C` corresponds to weaker regularization, which allows the model to better fit the data when multiple informative features are included.
+
+**Performance:**
+The final model achieves an accuracy of approximately **0.91** on the test set.
+
+**Improvement Over Baseline:**
+Compared to the baseline model (accuracy ≈ 0.89), the final model performs better. This improvement is expected because the additional features provide a more complete representation of in-game dynamics, rather than relying only on barons and dragons.
+
+**Evaluation:**
+The model generalizes well to unseen data, as shown by its strong performance on the test set. By incorporating multiple objective types and tuning hyperparameters, the model captures more nuanced patterns in how teams win games. While there is still room for improvement, this model demonstrates a meaningful step up from the baseline in both performance and representation of the data-generating process.
+
+## Fairness Analysis
+
+To evaluate whether the model performs differently across leagues, I compare performance between two groups:
+
+- **Group X (Major Leagues):** LCK, LEC, PCS, VCS, MSI, Worlds  
+- **Group Y (Non-Major Leagues):** All other leagues (excluding LPL due to data issues)
+
+**Evaluation Metric:**  
+I use **accuracy** as the evaluation metric, computed separately for each group, since the model is a binary classifier and accuracy directly reflects prediction correctness.
+
+**Null Hypothesis (H₀):**  
+The model performs equally well across major and non-major leagues.
+
+**Alternative Hypothesis (H₁):**  
+The model performs differently between major and non-major leagues.
+
+**Test Statistic:**  
+The difference in accuracy between the two groups:
+  
+\[
+\text{Accuracy}_{major} - \text{Accuracy}_{non-major}
+\]
+
+**Significance Level:**  
+\[
+\alpha = 0.05
+\]
+
+**Observed Statistic:**  
+The observed difference in accuracy is approximately **-0.0305**, indicating slightly lower performance on major leagues.
+
+**p-value:**  
+Using a permutation test with 5000 simulations, the resulting p-value is approximately **0.016**.
+
+**Conclusion:**  
+Since the p-value is less than 0.05, we reject the null hypothesis. This suggests that there is statistically significant evidence that the model performs differently between major and non-major leagues. However, this does not imply a large or practically meaningful difference, only that the observed difference is unlikely to be due to random chance.
