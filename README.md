@@ -32,10 +32,10 @@ Next, I dropped all rows where the `elders` column contained missing (`NaN`) val
 These cleaning steps helped improve the overall quality and reliability of the dataset by removing irrelevant features and incomplete observations. As a result, the final dataset used for analysis contains only matches with consistent and meaningful objective data, which leads to more accurate modeling and interpretation.
 
 Below is a preview of the cleaned dataset:
-| gameid           | league   | date                | position   | side   | teamname                |   result |   teamkills |   teamdeaths |   dragons |   elders |   heralds |   void_grubs |   barons |   damagetochampions |   totalgold |   monsterkills |   total_obj |
-|:-----------------|:---------|:--------------------|:-----------|:-------|:------------------------|---------:|------------:|-------------:|----------:|---------:|----------:|-------------:|---------:|--------------------:|------------:|---------------:|------------:|
-| LOLTMNT03_179647 | LFL2     | 2025-01-11 11:11:24 | team       | Blue   | IziDream                |        0 |           3 |           13 |         0 |        0 |         0 |            0 |        0 |               50143 |       42255 |            144 |           0 |
-| LOLTMNT03_179647 | LFL2     | 2025-01-11 11:11:24 | team       | Red    | Team Valiant            |        1 |          13 |            3 |         2 |        0 |         1 |            6 |        1 |               53681 |       53936 |            169 |          10 |
-| LOLTMNT06_96134  | LFL2     | 2025-01-11 12:06:37 | team       | Blue   | Esprit Shōnen           |        1 |          21 |           11 |         3 |        0 |         1 |            6 |        1 |              100112 |       64669 |            199 |          11 |
-| LOLTMNT06_96134  | LFL2     | 2025-01-11 12:06:37 | team       | Red    | Skillcamp               |        0 |          10 |           21 |         2 |        0 |         0 |            0 |        0 |               78010 |       50679 |            134 |           2 |
-| LOLTMNT06_95160  | LFL2     | 2025-01-11 13:07:47 | team       | Blue   | Karmine Corp Blue Stars |        0 |          18 |           22 |         0 |        0 |         0 |            2 |        0 |               67870 |       51389 |            146 |           2 |
+| league   |   result | position   |   barons |   dragons |   total_obj |
+|:---------|---------:|:-----------|---------:|----------:|------------:|
+| LFL2     |        0 | team       |        0 |         0 |           0 |
+| LFL2     |        1 | team       |        1 |         2 |          10 |
+| LFL2     |        1 | team       |        1 |         3 |          11 |
+| LFL2     |        0 | team       |        0 |         2 |           2 |
+| LFL2     |        0 | team       |        0 |         0 |           2 |
