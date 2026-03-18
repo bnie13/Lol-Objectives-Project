@@ -32,6 +32,7 @@ Next, I dropped all rows where the `elders` column contained missing (`NaN`) val
 These cleaning steps helped improve the overall quality and reliability of the dataset by removing irrelevant features and incomplete observations. As a result, the final dataset used for analysis contains only matches with consistent and meaningful objective data, which leads to more accurate modeling and interpretation.
 
 Below is a preview of the cleaned dataset:
+
 | league   |   result | position   |   barons |   dragons |   total_obj |
 |:---------|---------:|:-----------|---------:|----------:|------------:|
 | LFL2     |        0 | team       |        0 |         0 |           0 |
