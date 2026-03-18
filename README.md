@@ -124,10 +124,15 @@ First, I tested whether missingness depends on **league**. The observed test sta
     frameborder="0">
 </iframe>
 
+Next, I tested whether missingness in `atakhans` is related to **total gold**. I computed the difference in mean `totalgold` between games with missing and non-missing `atakhans` values and used this as the test statistic.
 
-I test whether Baron objective advantage has a stronger impact on win rate than Dragon objective advantage.
+The observed test statistic was approximately **2.21**. However, the permutation test produced a p-value of approximately **0.996**, which is very large. This indicates that the observed difference in `totalgold` is consistent with random chance.
+
+Therefore, there is no strong evidence that missingness in `atakhans` depends on `totalgold`. This suggests that while missingness is related to league (as shown earlier), it does not appear to be driven by in-game performance metrics like total gold.
 
 ## Hypothesis Testing
+
+I test whether Baron objective advantage has a stronger impact on win rate than Dragon objective advantage.
 
 **Null Hypothesis:**  
 The difference in win rate advantage between Baron and Dragon objectives is due to random chance.
