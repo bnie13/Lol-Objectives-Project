@@ -33,13 +33,13 @@ These cleaning steps helped improve the overall quality and reliability of the d
 
 Below is a preview of the cleaned dataset:
 
-| league   |   result | position   |   barons |   dragons |   total_obj |
-|:---------|---------:|:-----------|---------:|----------:|------------:|
-| LFL2     |        0 | team       |        0 |         0 |           0 |
-| LFL2     |        1 | team       |        1 |         2 |          10 |
-| LFL2     |        1 | team       |        1 |         3 |          11 |
-| LFL2     |        0 | team       |        0 |         2 |           2 |
-| LFL2     |        0 | team       |        0 |         0 |           2 |
+| league   |   result | position   |   totalgold |   barons |   dragons |   heralds |   void_grubs |   total_obj |
+|:---------|---------:|:-----------|------------:|---------:|----------:|----------:|-------------:|------------:|
+| LFL2     |        0 | team       |       42255 |        0 |         0 |         0 |            0 |           0 |
+| LFL2     |        1 | team       |       53936 |        1 |         2 |         1 |            6 |          10 |
+| LFL2     |        1 | team       |       64669 |        1 |         3 |         1 |            6 |          11 |
+| LFL2     |        0 | team       |       50679 |        0 |         2 |         0 |            0 |           2 |
+| LFL2     |        0 | team       |       51389 |        0 |         0 |         0 |            2 |           2 |
 
 ## Baron Advantage Distribution
 
