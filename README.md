@@ -250,15 +250,11 @@ The model performs differently between major and non-major leagues.
 
 **Test Statistic:**  
 The difference in accuracy between the two groups:
-  
-\[
-\text{Accuracy}_{major} - \text{Accuracy}_{non-major}
-\]
+
+Accuracy_major − Accuracy_non-major
 
 **Significance Level:**  
-\[
-\alpha = 0.05
-\]
+α = 0.05
 
 **Observed Statistic:**  
 The observed difference in accuracy is approximately **-0.0305**, indicating slightly lower performance on major leagues.
