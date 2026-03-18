@@ -44,7 +44,7 @@ Below is a preview of the cleaned dataset:
 ## Baron Advantage Distribution
 
 <iframe 
-    src="assets/baron_plot.html"
+    src="./assets/baron_plot.html"
     width="800"
     height="600"
     frameborder="0">
@@ -56,7 +56,7 @@ The distribution shows that most games have a small baron difference (0–1), me
 ## Dragon Advantage Distribution
 
 <iframe 
-    src="assets/dragon_plot.html"
+    src="./assets/dragon_plot.html"
     width="800"
     height="600"
     frameborder="0">
@@ -66,7 +66,7 @@ The dragon difference is more spread out, suggesting that teams are able to buil
 ## Relationship Between Objectives and Winning
 
 <iframe 
-    src="assets/box_plot.html"
+    src="./assets/box_plot.html"
     width="800"
     height="600"
     frameborder="0">
@@ -76,7 +76,7 @@ Winning teams tend to secure significantly more total objectives than losing tea
 ---
 
 <iframe 
-    src="assets/line_plot.html"
+    src="./assets/line_plot.html"
     width="800"
     height="600"
     frameborder="0">
@@ -114,12 +114,11 @@ To investigate whether missingness in the `atakhans` column is related to other 
 First, I tested whether missingness depends on **league**. The observed test statistic (difference between the maximum and minimum proportion of missing values across leagues) was 1.0. The permutation test produced a p-value of approximately 0.001, which is very small. This provides strong evidence that missingness in `atakhans` is dependent on league.
 
 <iframe 
-    src="assets/missing_league_plot.html"
+    src="./assets/missing_league_plot.html"
     width="800"
     height="600"
     frameborder="0">
 </iframe>
-
 The plot shows that certain leagues, particularly the LPL, have a much higher proportion of missing `atakhans` values compared to others. This supports the conclusion that missingness is not random and is strongly associated with league.
 
 Next, I tested whether missingness in `atakhans` depends on `totalgold`. The observed difference in mean total gold between missing and non-missing groups was approximately 2.21. However, the permutation test resulted in a relatively large p-value (0.12-0.20), indicating that this difference could reasonably occur by chance. Therefore, there is no strong evidence that missingness depends on total gold.
